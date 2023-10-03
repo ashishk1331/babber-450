@@ -1,11 +1,12 @@
 import Button from "./Button";
 import { useState, useEffect } from "react";
+import avatar from "/avatar.jpg";
 
 export default function Header(props) {
     return (
         <header className="flex flex-col flex-wrap items-left gap-3 mt-24">
             <img
-                src="https://i.pinimg.com/564x/9d/e5/d2/9de5d2ab40011b354914c778341e3bff.jpg"
+                src={avatar}
                 width={520}
                 height={520}
                 alt="Sasuke"
