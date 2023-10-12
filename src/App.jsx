@@ -14,6 +14,8 @@ export default function (props) {
     const changeTopic = useAppStore((state) => state.changeTopic);
     const [selectedTopic, setSelectedTopic] = useState(topic);
 
+    const [doneOnly, setDoneOnly] = useState(false);
+
     return (
         <main className="p-3 px-6 max-w-[720px] mx-auto">
             <div className="w-full h-48 bg-purple absolute inset-0 -z-10" />
@@ -49,10 +51,29 @@ export default function (props) {
                 })}
             </ul>
 
+            <div className="w-full my-4 flex flex-col gap-2 mt-8">
+                <p>Filters</p>
+                <div className="flex items-center gap-2">
+                    <input
+                        id="only-finished"
+                        type="checkbox"
+                        className="form-checkbox rounded text-purple"
+                        onChange={(e) => setDoneOnly(e.target.checked)}
+                    />
+                    <label htmlFor="only-finished">Show finished only</label>
+                </div>
+            </div>
+
             <ul className="pt-3">
-                {sheet[topic].map((i, index) => (
-                    <Task key={i.id} {...i} index={index} />
-                ))}
+                {sheet[topic].map((i, index) => {
+                    if (doneOnly) {
+                        if (done.includes(i.id)) {
+                            return <Task key={i.id} {...i} index={index} />;
+                        }
+                        return null;
+                    }
+                    return <Task key={i.id} {...i} index={index} />;
+                })}
             </ul>
 
             <Footer />

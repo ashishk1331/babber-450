@@ -6,7 +6,7 @@ export default function (props) {
 	const PERCENT = (DONE / TOTAL) * 100;
 
 	return (
-		<div className="w-full my-4 flex flex-col gap-2">
+		<div className="w-full my-4 flex flex-col gap-2 mt-8">
 			<div className="flex items-center justify-between">
 				<p>Total done:</p>
 				<p>
